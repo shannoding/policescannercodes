@@ -11,6 +11,11 @@ padding: 25px;
 border: 1px solid black;
 margin: 30px;
 }
+#results {
+padding: 25px;
+border: 1px solid black;
+margin: 30px;
+}
 h1 {
 font-size: 20px;
 }
@@ -33,201 +38,260 @@ font-size: 20px;
   }
   #codes {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  #codes > div {
+    flex: 1 1 400px;
+  }
+  #input {
+    padding:25px;
+  }
+  .desc {
+    margin-left:10px;
+  }
+  .code {
+    width:150px;
   }
 </style>
 </head>
   <body>
     <div id="input">
-    <input placeholder="1029"></input>
+    <input placeholder="1029" type="text"></input>
   <button>search</button>
+    </div>
+    <div id="results">
+      <h1>Results</h1>
+      <p>
+      </p>
     </div>
   <div id="codes">
 <div id="tens">
 <h1>10-00</h1>
 <p>
-10-0      Exercise great caution.<br>
-10-1      Reception is poor.<br>
-10-2      Reception is good.<br>
-10-3      Stop transmitting.<br>
-10-4      Message received.<br>
-10-5      Relay message.<br>
-10-6      Change channel.<br>
-10-7      Out of service/unavailable for assignment.<br>
-10-7A     Out of service at home.<br>
-10-7B     Out of service - personal.<br>
-10-8      In service/available for assignment.<br>
-10-9      Repeat last transmission.<br>
-10-10     Off duty.<br>
-10-10A    Off duty at home.<br>
-10-11     Identify this frequency.<br>
-10-12     Visitors are present (be discrete).<br>
-10-13     Advise weather and road conditions.<br>
-10-14     Citizen holding suspect.<br>
-10-15     Prisoner in custody.<br>
-10-16     Pick up prisoner.<br>
-10-17     Request for gasoline.<br>
-10-18     Equipment exchange.<br>
-10-19     Return/returning to the station.<br>
-10-20     Location?<br>
-10-21     Telephone:______<br>
-10-21A    Advise home that I will return at ______.<br>
-10-22     Disregard the last assignment.<br>
-10-22C    Leave area if all secure; no responsible person/owner is
-enroute.<br>
-10-23     Standby.<br>
-10-24     Request car-to-car transmission.<br>
-10-25     Do you have contact with _______?<br>
-10-26     Clear.<br>
-10-27     Driver's license check.<br>
-10-28     Vehicle registration request.<br>
-10-29     Check for being wanted/warrants.<br>
-10-29F    The subject is wanted for a felony.<br>
-10-29H    Caution - severe hazard potential.<br>
-10-29M    The subject is wanted for a misdemeanor.<br>
-10-29V    The vehicle is wanted in connection with a possible crime.<br>
-10-30     Does not conform to regulations.<br>
-10-32     Drowning.<br>
-10-33     Alarm sounding.<br>
-10-34     Assist at office.<br>
-10-35     Time check.<br>
-10-36     Confidential information.<br>
-10-37     Identify the operator.<br>
-10-39     Can ______ come to the radio?<br>
-10-40     Is ______ available for a telephone call?<br>
-10-42     Check on the welfare of/at ______.<br>
-10-43     Call a doctor.<br>
-10-45     What is the condition of the patient?<br>
-10-45A    Condition of patient is good.<br>
-10-45B    Condition of patient is serious.<br>
-10-45C    Condition of patient is critical.<br>
-10-45D    Patient is deceased.<br>
-10-49     Proceed to ______.<br>
-10-50     Subject is under the influence of narcotics.<br>
-10-51     Subject is drunk.<br>
-10-52     Resuscitator is needed.<br>
-10-53     Man down.<br>
-10-54     Possible dead body.<br>
-10-55     This is a coroner's case.<br>
-10-56     Suicide.<br>
-10-56A    Suicide attempt.<br>
-10-57     Missing person.<br>
-10-59     Security check.<br>
-10-60     Lock out.<br>
-10-61     Miscellaneous public service.<br>
-10-62     Meet a citizen.<br>
-10-62A    Take a report from a citizen.<br>
-10-62B    Civil standby.<br>
-10-63     Prepare to copy.<br>
-10-64     Found property.<br>
-10-66     Suspicious person.<br>
-10-67     Person calling for help.<br>
-10-68     Call for police made via telephone.<br>
-10-70     Prowler.<br>
-10-71     Shooting.<br>
-10-72     Gun involved.<br>
-10-73     How do you receive?<br>
-10-79     Bomb threat.<br>
-10-80     Explosion.<br>
-10-86     Any traffic?<br>
-10-88     Assume your post.<br>
-10-91     Animal.<br>
-10-91A    Stray.<br>
-10-91B    Noisy animal.<br>
-10-91C    Injured animal.<br>
-10-91D    Dead animal.<br>
-10-91E    Animal bite.<br>
-10-91G    Animal pickup.<br>
-10-91J    Pickup/collect ______.<br>
-10-91L    Leash law violation.<br>
-10-91V    Vicious animal.<br>
-10-95     Requesting an I.D./Tech unit.<br>
-10-97     Arrived at the scene.<br>
-10-98     Available for assignment.<br>
-10-100    Civil disturbance - Mutual aid standby.<br>
+<span class="code">10-0  </span>    <span class="desc">Exercise great caution.</span><br>
+<span class="code">10-1  </span>    <span class="desc">Reception is poor.</span><br>
+<span class="code">10-2  </span>    <span class="desc">Reception is good.</span><br>
+<span class="code">10-3  </span>    <span class="desc">Stop transmitting.</span><br>
+<span class="code">10-4  </span>    <span class="desc">Message received.</span><br>
+<span class="code">10-5  </span>    <span class="desc">Relay message.</span><br>
+<span class="code">10-6  </span>    <span class="desc">Change channel.</span><br>
+<span class="code">10-7  </span>    <span class="desc">Out of service/unavailable for assignment.</span><br>
+<span class="code">10-7A </span>    <span class="desc">Out of service at home.</span><br>
+<span class="code">10-7B </span>    <span class="desc">Out of service - personal.</span><br>
+<span class="code">10-8  </span>    <span class="desc">In service/available for assignment.</span><br>
+<span class="code">10-9  </span>    <span class="desc">Repeat last transmission.</span><br>
+<span class="code">10-10 </span>    <span class="desc">Off duty.</span><br>
+<span class="code">10-10A</span>    <span class="desc">Off duty at home.</span><br>
+<span class="code">10-11 </span>    <span class="desc">Identify this frequency.</span><br>
+<span class="code">10-12 </span>    <span class="desc">Visitors are present (be discrete).</span><br>
+<span class="code">10-13 </span>    <span class="desc">Advise weather and road conditions.</span><br>
+<span class="code">10-14 </span>    <span class="desc">Citizen holding suspect.</span><br>
+<span class="code">10-15 </span>    <span class="desc">Prisoner in custody.</span><br>
+<span class="code">10-16 </span>    <span class="desc">Pick up prisoner.</span><br>
+<span class="code">10-17 </span>    <span class="desc">Request for gasoline.</span><br>
+<span class="code">10-18 </span>    <span class="desc">Equipment exchange.</span><br>
+<span class="code">10-19 </span>    <span class="desc">Return/returning to the station.</span><br>
+<span class="code">10-20 </span>    <span class="desc">Location?</span><br>
+<span class="code">10-21 </span>    <span class="desc">Telephone:______</span><br>
+<span class="code">10-21A</span>    <span class="desc">Advise home that I will return at ______.</span><br>
+<span class="code">10-22 </span>    <span class="desc">Disregard the last assignment.</span><br>
+<span class="code">10-22C</span>    <span class="desc">Leave area if all secure; no responsible person/owner is enroute.</span><br>
+<span class="code">10-23 </span>    <span class="desc">Standby.</span><br>
+<span class="code">10-24 </span>    <span class="desc">Request car-to-car transmission.</span><br>
+<span class="code">10-25 </span>    <span class="desc">Do you have contact with _______?</span><br>
+<span class="code">10-26 </span>    <span class="desc">Clear.</span><br>
+<span class="code">10-27 </span>    <span class="desc">Driver's license check.</span><br>
+<span class="code">10-28 </span>    <span class="desc">Vehicle registration request.</span><br>
+<span class="code">10-29 </span>    <span class="desc">Check for being wanted/warrants.</span><br>
+<span class="code">10-29F</span>    <span class="desc">The subject is wanted for a felony.</span><br>
+<span class="code">10-29H</span>    <span class="desc">Caution - severe hazard potential.</span><br>
+<span class="code">10-29M</span>    <span class="desc">The subject is wanted for a misdemeanor.</span><br>
+<span class="code">10-29V</span>    <span class="desc">The vehicle is wanted in connection with a possible crime.</span><br>
+<span class="code">10-30 </span>    <span class="desc">Does not conform to regulations.</span><br>
+<span class="code">10-34 </span>    <span class="desc">Assist at office.</span><br>
+<span class="code">10-35 </span>    <span class="desc">Time check.</span><br>
+<span class="code">10-36 </span>    <span class="desc">Confidential information.</span><br>
+<span class="code">10-37 </span>    <span class="desc">Identify the operator.</span><br>
+<span class="code">10-39 </span>    <span class="desc">Can ______ come to the radio?</span><br>
+<span class="code">10-40 </span>    <span class="desc">Is ______ available for a telephone call?</span><br>
+<span class="code">10-42 </span>    <span class="desc">Check on the welfare of/at ______.</span><br>
+<span class="code">10-43 </span>    <span class="desc">Call a doctor.</span><br>
+<span class="code">10-45 </span>    <span class="desc">What is the condition of the patient?</span><br>
+<span class="code">10-45A</span>    <span class="desc">Condition of patient is good.</span><br>
+<span class="code">10-45B</span>    <span class="desc">Condition of patient is serious.</span><br>
+<span class="code">10-45C</span>    <span class="desc">Condition of patient is critical.</span><br>
+<span class="code">10-45D</span>    <span class="desc">Patient is deceased.</span><br>
+<span class="code">10-49 </span>    <span class="desc">Proceed to ______.</span><br>
+<span class="code">10-50 </span>    <span class="desc">Subject is under the influence of narcotics.</span><br>
+<span class="code">10-51 </span>    <span class="desc">Subject is drunk.</span><br>
+<span class="code">10-52 </span>    <span class="desc">Resuscitator is needed.</span><br>
+<span class="code">10-53 </span>    <span class="desc">Man down.</span><br>
+<span class="code">10-54 </span>    <span class="desc">Possible dead body.</span><br>
+<span class="code">10-55 </span>    <span class="desc">This is a coroner's case.</span><br>
+<span class="code">10-56 </span>    <span class="desc">Suicide.</span><br>
+<span class="code">10-56A</span>    <span class="desc">Suicide attempt.</span><br>
+<span class="code">10-57 </span>    <span class="desc">Missing person.</span><br>
+<span class="code">10-59 </span>    <span class="desc">Security check.</span><br>
+<span class="code">10-60 </span>    <span class="desc">Lock out.</span><br>
+<span class="code">10-61 </span>    <span class="desc">Miscellaneous public service.</span><br>
+<span class="code">10-62 </span>    <span class="desc">Meet a citizen.</span><br>
+<span class="code">10-62A</span>    <span class="desc">Take a report from a citizen.</span><br>
+<span class="code">10-62B</span>    <span class="desc">Civil standby.</span><br>
+<span class="code">10-63 </span>    <span class="desc">Prepare to copy.</span><br>
+<span class="code">10-64 </span>    <span class="desc">Found property.</span><br>
+<span class="code">10-66 </span>    <span class="desc">Suspicious person.</span><br>
+<span class="code">10-67 </span>    <span class="desc">Person calling for help.</span><br>
+<span class="code">10-68 </span>    <span class="desc">Call for police made via telephone.</span><br>
+<span class="code">10-70 </span>    <span class="desc">Prowler.</span><br>
+<span class="code">10-71 </span>    <span class="desc">Shooting.</span><br>
+<span class="code">10-72 </span>    <span class="desc">Gun involved.</span><br>
+<span class="code">10-73 </span>    <span class="desc">How do you receive?</span><br>
+<span class="code">10-79 </span>    <span class="desc">Bomb threat.</span><br>
+<span class="code">10-80 </span>    <span class="desc">Explosion.</span><br>
+<span class="code">10-86 </span>    <span class="desc">Any traffic?</span><br>
+<span class="code">10-88 </span>    <span class="desc">Assume your post.</span><br>
+<span class="code">10-91 </span>    <span class="desc">Animal.</span><br>
+<span class="code">10-91A</span>    <span class="desc">Stray.</span><br>
+<span class="code">10-91B</span>    <span class="desc">Noisy animal.</span><br>
+<span class="code">10-91C</span>    <span class="desc">Injured animal.</span><br>
+<span class="code">10-91D</span>    <span class="desc">Dead animal.</span><br>
+<span class="code">10-91E</span>    <span class="desc">Animal bite.</span><br>
+<span class="code">10-91G</span>    <span class="desc">Animal pickup.</span><br>
+<span class="code">10-91J</span>    <span class="desc">Pickup/collect ______.</span><br>
+<span class="code">10-91L</span>    <span class="desc">Leash law violation.</span><br>
+<span class="code">10-91V</span>    <span class="desc">Vicious animal.</span><br>
+<span class="code">10-95 </span>    <span class="desc">Requesting an I.D./Tech unit.</span><br>
+<span class="code">10-97 </span>    <span class="desc">Arrived at the scene.</span><br>
+<span class="code">10-98 </span>    <span class="desc">Available for assignment.</span><br>
+<span class="code">10-100</span>    <span class="desc">Civil disturbance - Mutual aid standby.</span><br>
 
-10-101    Civil disturbance - Mutual aid request.<br>
+<span class="code">10-101</span>    <span class="desc">Civil disturbance - Mutual aid request.</span><br>
 </p>
 </div>
 
 <div id="elevens">
 <h1>11-00</h1>
 <p>
-11-10     Take a report.<br>
-11-24     Abandoned automobile.<br>
-11-25     Traffic hazard.<br>
-11-26     Abandoned bicycle.<br>
-11-27     10-27 with the driver being held.<br>
-11-28     10-28 with the driver being held.<br>
-11-40     Advise if an ambulance is needed.<br>
-11-41     An ambulance is needed.<br>
-11-42     No ambulance is needed.<br>
-11-48     Furnish transportation.<br>
-11-51     Escort.<br>
-11-52     Funeral detail.<br>
-11-54     Suspicious vehicle.<br>
-11-55     Officer is being followed by automobile.<br>
-11-56     Officer is being followed by auto containing dangerous persons.<br>
-11-57     An unidentified auto appeared at the scene of the assignment.<br>
-11-58     Radio traffic is being monitored. Phone all non-routine messages.<br>
-11-59     Give intensive attention to high hazard/business areas.<br>
-11-60     Attack in a high hazard area.<br>
-11-65     Signal light is out.<br>
-11-66     Defective traffic light.<br>
-11-78     Aircraft accident.<br>
-11-79     Accident - ambulance has been sent.<br>
-11-80     Accident - major injuries.<br>
-11-81     Accident - minor injuries.<br>
-11-82     Accident - no injuries.<br>
-11-83     Accident - no details.<br>
-11-84     Direct traffic.<br>
-11-85     Tow truck required.<br>
-11-94     Pedestrian stop.<br>
-11-95     Routine traffic stop.<br>
-11-96     Checking a suspicious vehicle.<br>
-11-97     Time/security check on patrol vehicles.<br>
-11-98     Meet: _______<br>
-11-99     Officer needs help.<br>
+11-10     Take a report.</span><br>
+11-24     Abandoned automobile.</span><br>
+11-25     Traffic hazard.</span><br>
+11-26     Abandoned bicycle.</span><br>
+11-27     10-27 with the driver being held.</span><br>
+11-28     10-28 with the driver being held.</span><br>
+11-40     Advise if an ambulance is needed.</span><br>
+11-41     An ambulance is needed.</span><br>
+11-42     No ambulance is needed.</span><br>
+11-48     Furnish transportation.</span><br>
+11-51     Escort.</span><br>
+11-52     Funeral detail.</span><br>
+11-54     Suspicious vehicle.</span><br>
+11-55     Officer is being followed by automobile.</span><br>
+11-56     Officer is being followed by auto containing dangerous persons.</span><br>
+11-57     An unidentified auto appeared at the scene of the assignment.</span><br>
+11-58     Radio traffic is being monitored. Phone all non-routine messages.</span><br>
+11-59     Give intensive attention to high hazard/business areas.</span><br>
+11-60     Attack in a high hazard area.</span><br>
+11-65     Signal light is out.</span><br>
+11-66     Defective traffic light.</span><br>
+11-78     Aircraft accident.</span><br>
+11-79     Accident - ambulance has been sent.</span><br>
+11-80     Accident - major injuries.</span><br>
+11-81     Accident - minor injuries.</span><br>
+11-82     Accident - no injuries.</span><br>
+11-83     Accident - no details.</span><br>
+11-84     Direct traffic.</span><br>
+11-85     Tow truck required.</span><br>
+11-94     Pedestrian stop.</span><br>
+11-95     Routine traffic stop.</span><br>
+11-96     Checking a suspicious vehicle.</span><br>
+11-97     Time/security check on patrol vehicles.</span><br>
+11-98     Meet: _______</span><br>
+11-99     Officer needs help.</span><br>
 </p>
 </div>
 <div id="nines">
 <h1>900</h1>
 <p>
-904       Fire.<br>
-904A      Automobile fire.<br>
-904B      Building fire.<br>
-904G      Grass fire.<br>
-909       Traffic problem; police needed.<br>
-910       Can handle this detail.<br>
-932       Turn on _______ mobile relay at _______.<br>
-933       Turn off mobile relay.<br>
-949       Burning inspection at _______.<br>
-950       Control burn in progress/about to begin/ended.<br>
-951       Need fire investigator.<br>
-952       Report on conditions.<br>
-953       Investigate smoke.<br>
-953A      Investigate gas.<br>
-954       Off the air at the scene of the fire.<br>
-955       Fire is under control.<br>
-956       Assignment not finished.<br>
-980       Restrict calls to emergency only.<br>
-981       Resume normal traffic.<br>
+904       Fire.</span><br>
+904A      Automobile fire.</span><br>
+904B      Building fire.</span><br>
+904G      Grass fire.</span><br>
+909       Traffic problem; police needed.</span><br>
+910       Can handle this detail.</span><br>
+932       Turn on _______ mobile relay at _______.</span><br>
+933       Turn off mobile relay.</span><br>
+949       Burning inspection at _______.</span><br>
+950       Control burn in progress/about to begin/ended.</span><br>
+951       Need fire investigator.</span><br>
+952       Report on conditions.</span><br>
+953       Investigate smoke.</span><br>
+953A      Investigate gas.</span><br>
+954       Off the air at the scene of the fire.</span><br>
+955       Fire is under control.</span><br>
+956       Assignment not finished.</span><br>
+980       Restrict calls to emergency only.</span><br>
+981       Resume normal traffic.</span><br>
 </p>
 </div>
 <div id="other">
 <h1>Other</h1>
 <p>
-1    Do so at your convenience.<br>
-2    Urgent.<br>
-3    Emergency/lights and siren.<br>
-4    No further assistance is needed.<br>
-5    Stakeout.<br>
-6    Responding from a long distance.<br>
-7    Mealtime.<br>
-8    Request cover/backup.<br>
-9    Set up a roadblock.<br>
-33   Mobile emergency - clear this radio channel.<br>
+1    Do so at your convenience.</span><br>
+2    Urgent.</span><br>
+3    Emergency/lights and siren.</span><br>
+4    No further assistance is needed.</span><br>
+5    Stakeout.</span><br>
+6    Responding from a long distance.</span><br>
+7    Mealtime.</span><br>
+8    Request cover/backup.</span><br>
+9    Set up a roadblock.</span><br>
+33   Mobile emergency - clear this radio channel.</span><br>
 </p>
 </div>
   </div>
+  <script>
+  var inp = document.querySelector("input");
+  var tenCodes = document.querySelectorAll("#tens .code");
+  var tenDesc = document.querySelectorAll("#tens .desc");
+  var resultsBox = document.querySelector("#results p");
+  var getDescArray = function()  {
+  	var descArray = [];
+  	var co = inp.value;
+    if (co === "") {
+      return [];
+    }
+  	for (var i = 0; i < tenCodes.length; i++) {
+      var eachCode = tenCodes[i].textContent.replace("-", "");
+  		if (eachCode.includes(co)) {
+          descArray.push(i);
+        }
+    }
+  console.log(descArray);
+  return descArray;
+};
+  var showResults = function() {
+    var descArray = getDescArray();
+    resultsBox.innerHTML = "";
+    descArray.forEach(function(element) {
+      resultsBox.innerHTML += '<span class="codes">' + tenCodes[element].textContent + "</span>     <span class='desc'>" + tenDesc[element].textContent + "</span><br>";
+    });
+  };
+// inp.addEventListener("change", showResults);
+//setup before functions
+var typingTimer;                //timer identifier
+var doneTypingInterval = 1000;  //time in ms, 5 second for example
+
+//on keyup, start the countdown
+inp.addEventListener('keyup', function () {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(showResults, doneTypingInterval);
+});
+
+//on keydown, clear the countdown
+inp.addEventListener('keydown', function () {
+  clearTimeout(typingTimer);
+});
+  </script>
 </body>
 </html>
