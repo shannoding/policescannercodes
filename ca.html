@@ -4,114 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <title>CA Police Scanner Codes</title>
-<style>
-body {
-  transition:1s;
-  font-family:monospace;
-}
-.body-dark {
-  background:#222;
-  transition:1s;
-}
-.codesBox {
-width: 400px;
-padding: 25px;
-border: 1px solid #222;
-margin: 30px;
-flex: 1 1 400px;
-color: #222;
-background:white;
-transition:1s;
-}
-.codesBox-dark {
-  width: 400px;
-  padding: 25px;
-  border: 1px solid white;
-  margin: 30px;
-  flex: 1 1 400px;
-  color: white;
-  background: #222;
-  transition:1s;
-}
-#results {
-padding: 25px;
-margin: 30px;
-}
-.resultsBox {
-  border: 1px solid #222;
-  background:white;
-  transition:1s;
-}
-.resultsBox-dark {
-  border: 1px solid white;
-  background: #222;
-  color:white;
-  transition:1s;
-}
-
-  .list {
-    font-size:1.2em;
-    line-height:1.5em;
-    display:flex;
-    flex-wrap: wrap;
-  }
-  button {
-    padding:5px;
-    background-color:white;
-    border:1px solid #222;
-    transition: 1s;
-  }
-  button:hover {
-    background-color:#222;
-    color:white;
-  }
-  .but-dark {
-    padding:5px;
-    background-color:#222;
-    border:1px solid white;
-    transition: 1s;
-    color:white;
-  }
-  .but-dark:hover {
-    background-color: white;
-    color:#222;
-  }
-  input {
-    padding: 5px;
-    transition:1s;
-
-  }
-  #codes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  #input, #pref {
-    padding:25px;
-  }
-  .desc {
-    flex-basis:70%;
-  }
-  .code {
-    min-width:100px;
-    max-width:300px;
-    flex-basis:30%;
-  }
-  #pref {
-    float: right;
-  }
-  .input-dark {
-    background:#222;
-    transition:1s;
-    color:white;
-  }
-  .input-dark::placeholder {
-    color:white;
-    opacity:0.7;
-    transition:1s;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
   <body>
     <div id="pref">
@@ -311,52 +204,10 @@ margin: 30px;
 </div>
 </div>
   </div>
+  <script src="code-search.js">
+
+  </script>
   <script>
-  var inp = document.querySelector("input");
-  var allCodes = document.querySelectorAll("#codes .code");
-  var allDesc = document.querySelectorAll("#codes .desc");
-  var resultsBox = document.querySelector("#results .list");
-  var getDescArray = function()  {
-  	var descArray = [];
-  	var co = inp.value;
-    if (co === "") {
-      return [];
-    }
-  	for (var i = 0; i < allCodes.length; i++) {
-      var eachCode = allCodes[i].textContent.replace("-", "");
-  		if (eachCode.includes(co)) {
-          descArray.push(i);
-        }
-    }
-  console.log(descArray);
-  return descArray;
-};
-  var showResults = function() {
-    var descArray = getDescArray();
-    resultsBox.innerHTML = "";
-    if (descArray.length === 0) {
-      resultsBox.innerHTML = "<p>no results found</p>";
-    }
-    descArray.forEach(function(element) {
-      resultsBox.innerHTML += '<span class="code">' + allCodes[element].textContent + "</span>     <span class='desc'>" + allDesc[element].textContent + "</span><br>";
-    });
-  };
-// inp.addEventListener("change", showResults);
-//setup before functions
-var typingTimer;                //timer identifier
-var doneTypingInterval = 500;  //time in ms, 5 second for example
-
-//on keyup, start the countdown
-inp.addEventListener('keyup', function () {
-  clearTimeout(typingTimer);
-  typingTimer = setTimeout(showResults, doneTypingInterval);
-});
-
-//on keydown, clear the countdown
-inp.addEventListener('keydown', function () {
-  clearTimeout(typingTimer);
-});
-
 
 var codesBoxes = document.getElementsByClassName("codesBox");
 var resultsBoxClass = document.querySelector(".resultsBox");
@@ -364,13 +215,18 @@ var darkToggleButton = document.getElementById("dark-toggle");
 var buttons = document.getElementsByClassName("but");
 var darkTheme = function() {
   for(var i = 0; i < codesBoxes.length; i++) {
+    codesBoxes[i].style.transition = "1s";
     codesBoxes[i].classList.toggle("codesBox-dark");
   }
   for(var i = 0; i < buttons.length; i++) {
+    buttons[i].style.transition = "1s";
     buttons[i].classList.toggle("but-dark");
   }
+  resultsBoxClass.style.transition = "1s";
   resultsBoxClass.classList.toggle("resultsBox-dark");
+  document.body.style.transition = "1s";
   document.body.classList.toggle("body-dark");
+  inp.style.transition = "1s";
   inp.classList.toggle("input-dark");
   if (darkToggleButton.textContent === "dark") {
     darkToggleButton.textContent = "light";
