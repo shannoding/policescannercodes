@@ -334,6 +334,9 @@ margin: 30px;
   var showResults = function() {
     var descArray = getDescArray();
     resultsBox.innerHTML = "";
+    if (descArray.length === 0) {
+      resultsBox.innerHTML = "<p>no results found</p>";
+    }
     descArray.forEach(function(element) {
       resultsBox.innerHTML += '<span class="code">' + allCodes[element].textContent + "</span>     <span class='desc'>" + allDesc[element].textContent + "</span><br>";
     });
@@ -341,7 +344,7 @@ margin: 30px;
 // inp.addEventListener("change", showResults);
 //setup before functions
 var typingTimer;                //timer identifier
-var doneTypingInterval = 800;  //time in ms, 5 second for example
+var doneTypingInterval = 500;  //time in ms, 5 second for example
 
 //on keyup, start the countdown
 inp.addEventListener('keyup', function () {
