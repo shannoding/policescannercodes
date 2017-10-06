@@ -5,9 +5,8 @@
 <meta charset="UTF-8">
 <title>CA Police Scanner Codes</title>
 <style>
-div {
+#tens, #elevens, #nines, #other {
 width: 400px;
-float: left;
 padding: 25px;
 border: 1px solid black;
 margin: 30px;
@@ -32,12 +31,18 @@ font-size: 20px;
   input {
     padding: 5px;
   }
+  #codes {
+    display: flex;
+  }
 </style>
 </head>
   <body>
+    <div id="input">
     <input placeholder="1029"></input>
   <button>search</button>
-<div>
+    </div>
+  <div id="codes">
+<div id="tens">
 <h1>10-00</h1>
 <p>
 10-0      Exercise great caution.<br>
@@ -144,7 +149,7 @@ enroute.<br>
 </p>
 </div>
 
-<div>
+<div id="elevens">
 <h1>11-00</h1>
 <p>
 11-10     Take a report.<br>
@@ -184,7 +189,7 @@ enroute.<br>
 11-99     Officer needs help.<br>
 </p>
 </div>
-<div>
+<div id="nines">
 <h1>900</h1>
 <p>
 904       Fire.<br>
@@ -208,7 +213,7 @@ enroute.<br>
 981       Resume normal traffic.<br>
 </p>
 </div>
-<div>
+<div id="other">
 <h1>Other</h1>
 <p>
 1    Do so at your convenience.<br>
@@ -223,5 +228,6 @@ enroute.<br>
 33   Mobile emergency - clear this radio channel.<br>
 </p>
 </div>
+  </div>
 </body>
 </html>
