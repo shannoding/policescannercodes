@@ -369,6 +369,12 @@ var darkTheme = function() {
   resultsBoxClass.classList.toggle("resultsBox-dark");
   document.body.classList.toggle("body-dark");
   inp.classList.toggle("input-dark");
+  if (darkToggleButton.textContent === "dark") {
+    darkToggleButton.textContent = "light";
+  }
+  else {
+    darkToggleButton.textContent = "dark";
+  }
 };
 darkToggleButton.addEventListener("click", darkTheme);
   </script>
