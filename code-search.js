@@ -5,11 +5,14 @@ var resultsBox = document.querySelector("#results .list");
 var getDescArray = function()  {
   var descArray = [];
   var co = inp.value.trim();
+  co = co.replace(/[^a-z0-9]/gi, "");
+  console.log("CO IS " + co);
   if (co === "") {
     return [];
   }
   for (var i = 0; i < allCodes.length; i++) {
-    var eachCode = allCodes[i].textContent.replace("-", "");
+    var eachCode = allCodes[i].textContent.replace(/[^a-z0-9]/gi, "");
+    console.log(eachCode);
     if (eachCode.includes(co.toUpperCase())) {
         descArray.push(i);
       }
