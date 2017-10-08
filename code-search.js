@@ -6,7 +6,6 @@ var getDescArray = function()  {
   var descArray = [];
   var co = inp.value.trim();
   co = co.replace(/[^a-z0-9]/gi, "");
-  console.log("CO IS " + co);
   if (co === "") {
     return [];
   }
@@ -27,7 +26,12 @@ var showResults = function() {
     resultsBox.innerHTML = "<p>no results found</p>";
   }
   descArray.forEach(function(element) {
-    resultsBox.innerHTML += '<span class="code">' + allCodes[element].textContent + "</span>     <span class='desc'>" + allDesc[element].textContent + "</span><br>";
+    if (pin.check(allCodes[element].textContent.trim())) {
+      resultsBox.innerHTML += '<span class="code"><span><button class="but pinBut pinnedButton">pin</button></span>' + allCodes[element].textContent + '</span>     <span class="desc">' + allDesc[element].textContent + "</span><br>";
+    }
+    else {
+      resultsBox.innerHTML += '<span class="code"><span><button class="but pinBut" onclick="pin.add(this)">pin</button></span>' + allCodes[element].textContent + '</span>     <span class="desc">' + allDesc[element].textContent + "</span><br>";
+    }
   });
 };
 // inp.addEventListener("change", showResults);
@@ -45,3 +49,29 @@ typingTimer = setTimeout(showResults, doneTypingInterval);
 inp.addEventListener('keydown', function () {
 clearTimeout(typingTimer);
 });
+
+var pin = {
+  list: [],
+  getCode: function(elementClicked) {
+    var newCode = elementClicked.parentElement.parentElement.textContent.substring(3).trim();
+    return newCode;
+  },
+  add: function(pinClicked) {
+    var newCode = pin.getCode(pinClicked);
+    if (!pin.check(newCode)) {
+      pin.list.push(newCode);
+      pinClicked.classList.add("pinnedButton");
+    }
+    console.log(this.list);
+  },
+  check: function(checkCode) {
+    console.log("entered check. checkCode is " + checkCode + " and array is " + this.list);
+    for (var i = 0; i < pin.list.length; i++) {
+      if (pin.list[i] == checkCode) {
+        return true;
+      }
+    }
+    return false;
+  }
+};
+var pinBut = document.getElementsByClassName("pinBut");
