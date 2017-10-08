@@ -61,7 +61,7 @@ var pin = {
     if (!pin.check(newCode)) {
       pin.list.push(newCode);
       pinClicked.classList.add("pinnedButton");
-      pinned.fill();
+      this.fill();
     }
     console.log(this.list);
   },
@@ -73,16 +73,26 @@ var pin = {
       }
     }
     return false;
+  },
+  fill: function() {
+    pinnedBox.innerHTML = "";
+    for (var i = 0; i < this.list.length; i++) {
+        pinnedBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut" onclick="pin.remove(this)">unpin</button></span>' + pin.list[i] + '</span>     <span class="descDisplay">' + "the description" + "</span><br>";
+    }
+  },
+  getRemoveCode: function(elementClicked) {
+    var newCode = elementClicked.parentElement.parentElement.textContent.substring(5).trim();
+    return newCode;
+  },
+  remove: function(pinClicked) {
+    var codeToRemove = this.getRemoveCode(pinClicked);
+    var index = this.list.indexOf(codeToRemove);
+    if (index > -1) {
+      this.list.splice(index, 1);
+    }
+    showResults();
+    this.fill();
   }
 };
 var pinBut = document.getElementsByClassName("pinBut");
 var pinnedBox = document.querySelector("#pinned .list");
-var pinned =
-{
-  fill: function() {
-    pinnedBox.innerHTML = "";
-    for (var i = 0; i < pin.list.length; i++) {
-        pinnedBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut pinnedButton">unpin</button></span>' + pin.list[i] + '</span>     <span class="descDisplay">' + "the description" + "</span><br>";
-    }
-  }
-};

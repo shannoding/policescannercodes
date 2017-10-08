@@ -169,7 +169,7 @@
     </div>
   </div>
   <div id="nines" class="codesBox">
-    <h1>900</h1>
+    <h1>900 Codes</h1>
     <div class="list">
       <span class="code">904 </span>      <span class="desc">Fire.</span><br>
       <span class="code">904A</span>      <span class="desc">Automobile fire.</span><br>
@@ -305,7 +305,7 @@
     </div>
   </div>
   <div id="vehicle" class="codesBox">
-    <h1>Vehicle</h1>
+    <h1>Vehicle Codes</h1>
     <div class="list">
       <span class="code">10851 </span>    <span class="desc">Auto theft</span><br>
       <span class="code">10852 </span>    <span class="desc">Malicious mischief to a vehicle; remove parts</span><br>
@@ -324,7 +324,7 @@
     </div>
   </div>
   <div id="health" class="codesBox">
-    <h1>Health and Safety</h1>
+    <h1>Health and Safety Codes</h1>
     <div class="list">
       <span class="code">11350 </span>    <span class="desc">Possession relating to heroin, cocaine, peyote, mescaline, or THC</span><br>
       <span class="code">11352 </span>    <span class="desc">Sale/transportation relating to heroin, cocaine, peyote, mescaline, or THC</span><br>
@@ -346,7 +346,7 @@
     </div>
   </div>
   <div id="game" class="codesBox">
-    <h1>Fish and Game</h1>
+    <h1>Fish and Game Codes</h1>
     <div class="list">
       <span class="code">2000</span>      <span class="desc">Unlawful taking of animals</span><br>
       <span class="code">2002</span>      <span class="desc">Unlawful possession except as provided by Code of, overlimit, undersized, or using unlawful equipment.</span><br>
@@ -358,6 +358,7 @@
 <script>
 var codesBoxes = document.getElementsByClassName("codesBox");
 var resultsBoxClass = document.querySelector(".resultsBox");
+var pinnedBoxClass = document.querySelector(".pinnedBox");
 var darkToggleButton = document.getElementById("dark-toggle");
 var buttons = document.getElementsByClassName("but");
 var darkTheme = function() {
@@ -372,6 +373,8 @@ var darkTheme = function() {
   }
   resultsBoxClass.style.transition = transitionTime;
   resultsBoxClass.classList.toggle("resultsBox-dark");
+  pinnedBoxClass.style.transition = transitionTime;
+  pinnedBoxClass.classList.toggle("resultsBox-dark");
   document.body.style.transition = transitionTime;
   document.body.classList.toggle("body-dark");
   inp.style.transition = transitionTime;
