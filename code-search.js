@@ -2,6 +2,7 @@ var inp = document.querySelector("input");
 var allCodes = document.querySelectorAll("#codes .code");
 var allDesc = document.querySelectorAll("#codes .desc");
 var resultsBox = document.querySelector("#results .list");
+
 var getDescArray = function()  {
   var descArray = [];
   var co = inp.value.trim();
@@ -15,7 +16,7 @@ var getDescArray = function()  {
     if (eachCode.includes(co.toUpperCase())) {
         descArray.push(i);
       }
-  }
+  };
 console.log(descArray);
 return descArray;
 };
