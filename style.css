@@ -24,16 +24,16 @@ background:white;
   background: #222;
 
 }
-#results {
+#results, #pinned {
 padding: 25px;
 margin: 30px;
 }
-.resultsBox {
+.resultsBox, .pinnedBox{
   border: 1px solid #222;
   background:white;
 
 }
-.resultsBox-dark {
+.resultsBox-dark, .pinnedBox-dark {
   border: 1px solid white;
   background: #222;
   color:white;
@@ -81,21 +81,21 @@ margin: 30px;
   #input, #pref {
     padding:25px;
   }
-  .desc {
+  .desc, .descDisplay {
     flex-basis:70%;
   }
-  .code {
+  .code, .codeDisplay {
     min-width:100px;
     max-width:300px;
     flex-basis:30%;
   }
-  #results .code {
+  #results .codeDisplay, #pinned .codeDisplay {
     min-width:100px;
     max-width:300px;
     flex-basis: 30%;
 
   }
-  #results .pinBut {
+  #results .pinBut, #pinned .pinBut {
     margin-right:10px;
   }
   #pref {

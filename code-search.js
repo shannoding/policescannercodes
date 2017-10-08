@@ -27,10 +27,10 @@ var showResults = function() {
   }
   descArray.forEach(function(element) {
     if (pin.check(allCodes[element].textContent.trim())) {
-      resultsBox.innerHTML += '<span class="code"><span><button class="but pinBut pinnedButton">pin</button></span>' + allCodes[element].textContent + '</span>     <span class="desc">' + allDesc[element].textContent + "</span><br>";
+      resultsBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut pinnedButton">pin</button></span>' + allCodes[element].textContent + '</span>     <span class="descDisplay">' + allDesc[element].textContent + "</span><br>";
     }
     else {
-      resultsBox.innerHTML += '<span class="code"><span><button class="but pinBut" onclick="pin.add(this)">pin</button></span>' + allCodes[element].textContent + '</span>     <span class="desc">' + allDesc[element].textContent + "</span><br>";
+      resultsBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut" onclick="pin.add(this)">pin</button></span>' + allCodes[element].textContent + '</span>     <span class="descDisplay">' + allDesc[element].textContent + "</span><br>";
     }
   });
 };
@@ -61,6 +61,7 @@ var pin = {
     if (!pin.check(newCode)) {
       pin.list.push(newCode);
       pinClicked.classList.add("pinnedButton");
+      pinned.fill();
     }
     console.log(this.list);
   },
@@ -75,3 +76,13 @@ var pin = {
   }
 };
 var pinBut = document.getElementsByClassName("pinBut");
+var pinnedBox = document.querySelector("#pinned .list");
+var pinned =
+{
+  fill: function() {
+    pinnedBox.innerHTML = "";
+    for (var i = 0; i < pin.list.length; i++) {
+        pinnedBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut pinnedButton">unpin</button></span>' + pin.list[i] + '</span>     <span class="descDisplay">' + "the description" + "</span><br>";
+    }
+  }
+};
