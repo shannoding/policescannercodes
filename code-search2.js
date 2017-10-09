@@ -72,3 +72,28 @@ var codeDescList = {
     return this.cleanCodesAndDescList;
   }
 };
+
+
+var codeSearch = {
+  indexArray: [],
+  input: "",
+  findInput: function() {
+    var co = inp.value.trim();
+    co = co.replace(/[^a-z0-9]/gi, "");
+    return co;
+  },
+  getSearchIndexArray: function()  {
+    this.input = findInput();
+    if (this.input === "") {
+      indexArray = [];
+      return indexArray;
+    }
+    for (var i = 0; i < allCodes.length; i++) {
+      var eachCode = allCodes[i].textContent.replace(/[^a-z0-9]/gi, "");
+      console.log(eachCode);
+      if (eachCode.includes(co.toUpperCase())) {
+          descArray.push(i);
+        }
+    }
+  }
+}; 

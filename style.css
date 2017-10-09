@@ -33,7 +33,7 @@ margin: 30px;
   background:white;
 
 }
-.resultsBox-dark, .pinnedBox-dark {
+.resultsBox-dark, .pinnedBox {
   border: 1px solid white;
   background: #222;
   color:white;
