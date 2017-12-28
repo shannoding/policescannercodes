@@ -365,7 +365,7 @@ var doneTypingInterval = 500;  //time in ms, 5 second for example
 //on keyup, start the countdown
 inp.addEventListener('keyup', function () {
 clearTimeout(typingTimer);
-typingTimer = setTimeout(showResults.searchResults(), doneTypingInterval);
+typingTimer = setTimeout(codeSearch.showResults(), doneTypingInterval);
 });
 
 //on keydown, clear the countdown
