@@ -139,13 +139,26 @@ var codeSearch = {
 
 var pin = {
   pinnedList: [],
+  indexOf: function(e) {
+    for (var i = 0; i < this.pinnedList.length; i++) {
+      if (this.pinnedList[i].index === e.index) {
+        return i;
+      }
+    }
+    return -1;
+  },
   add: function(button) {
     var i = button.id.substring(1);
+    if (this.indexOf(codeDescList.codesAndDescList[i]) != -1) {
+      return;
+    }
     this.pinnedList.push(codeDescList.codesAndDescList[i]);
-    console.log(codeDescList.codesAndDescList[i]);
+    button.classList.add("pinnedButton");
+    console.log(this.indexOf(codeDescList.codesAndDescList[i]));
     this.showPinned();
   },
   remove: function(button) {
+    var i = button.id.substring(1);
   },
   showPinned: function() {
     pinnedBox.innerHTML = "";
