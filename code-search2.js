@@ -131,7 +131,12 @@ var codeSearch = {
     }
 
     rArray.forEach(function(element) {
-      resultsBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut" id="r' + element.index + '" onclick="pin.add(this)">pin</button></span>' + codeDescList.codesAndDescList[element.index].code + '</span>     <span class="descDisplay">' + element.desc + "</span><br>";
+      if (pin.indexOf(element) === -1) {
+        resultsBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut" id="r' + element.index + '" onclick="pin.add(this)">pin</button></span>' + codeDescList.codesAndDescList[element.index].code + '</span>     <span class="descDisplay">' + element.desc + "</span><br>";
+      }
+      else {
+        resultsBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut pinnedButton" id="r' + element.index + '" onclick="pin.add(this)">pin</button></span>' + codeDescList.codesAndDescList[element.index].code + '</span>     <span class="descDisplay">' + element.desc + "</span><br>";
+      }
     });
   }
 };
@@ -149,7 +154,7 @@ var pin = {
   },
   add: function(button) {
     var i = button.id.substring(1);
-    if (this.indexOf(codeDescList.codesAndDescList[i]) != -1) {
+    if (this.indexOf(codeDescList.codesAndDescList[i]) !== -1) {
       return;
     }
     this.pinnedList.push(codeDescList.codesAndDescList[i]);
@@ -159,12 +164,13 @@ var pin = {
   },
   remove: function(button) {
     var i = button.id.substring(1);
+    var j = this.indexOf(codeDescList.codesAndDescList[i]);
+    this.pinnedList.splice(j, 1);
+    this.showPinned();
+    codeSearch.showResults();
   },
   showPinned: function() {
     pinnedBox.innerHTML = "";
-    if (this.pinnedList.length === 0) {
-      pinnedBox.innerHTML = '<p>nothing pinned. click "pin" next to each code to pin.';
-    }
     this.pinnedList.forEach(function(element) {
       pinnedBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut" id="r' + element.index + '" onclick="pin.remove(this)">remove</button></span>' + codeDescList.codesAndDescList[element.index].code + '</span>     <span class="descDisplay">' + element.desc + "</span><br>";
     });
