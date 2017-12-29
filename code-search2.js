@@ -98,7 +98,6 @@ var codeSearch = {
     var co = inp.value.trim();
     co = co.replace(/[^a-z0-9]/gi, "").toUpperCase();
     this.input = co;
-    console.log("INPUT IS " + this.input);
     return co;
   },
   getResultArray: function() {
@@ -109,9 +108,7 @@ var codeSearch = {
     }
     codeDescList.cleanCodesAndDescList.forEach(function(element) {
       var eachCode = element.code;
-      console.log(codeSearch.input);
       if (eachCode.includes(codeSearch.input)) {
-        console.log(element);
         var eachDesc = element.desc;
         var i = element.index;
         codeSearch.resultArray.push({
@@ -159,7 +156,6 @@ var pin = {
     }
     this.pinnedList.push(codeDescList.codesAndDescList[i]);
     button.classList.add("pinnedButton");
-    console.log(this.indexOf(codeDescList.codesAndDescList[i]));
     this.showPinned();
   },
   remove: function(button) {

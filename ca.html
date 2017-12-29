@@ -355,13 +355,30 @@
 </div>
 <script src="code-search.js">
 </script>
+<script type="text/javascript">
+var inp = document.querySelector("input");
+var typingTimer;                //timer identifier
+var doneTypingInterval = 500;  //time in ms, 5 second for example
+
+//on keyup, start the countdown
+inp.addEventListener('keyup', function () {
+clearTimeout(typingTimer);
+typingTimer = setTimeout(codeSearch.showResults(), doneTypingInterval);
+});
+
+//on keydown, clear the countdown
+inp.addEventListener('keydown', function () {
+clearTimeout(typingTimer);
+});
+
+</script>
 <script>
-var codesBoxes = document.getElementsByClassName("codesBox");
-var resultsBoxClass = document.querySelector(".resultsBox");
-var pinnedBoxClass = document.querySelector(".pinnedBox");
 var darkToggleButton = document.getElementById("dark-toggle");
-var buttons = document.getElementsByClassName("but");
 var darkTheme = function() {
+  var codesBoxes = document.getElementsByClassName("codesBox");
+  var resultsBoxClass = document.querySelector(".resultsBox");
+  var pinnedBoxClass = document.querySelector(".pinnedBox");
+  var buttons = document.getElementsByClassName("but");
   var transitionTime = "1s";
   for(var i = 0; i < codesBoxes.length; i++) {
     codesBoxes[i].style.transition = transitionTime;

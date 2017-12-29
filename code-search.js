@@ -2,98 +2,173 @@ var inp = document.querySelector("input");
 var allCodes = document.querySelectorAll("#codes .code");
 var allDesc = document.querySelectorAll("#codes .desc");
 var resultsBox = document.querySelector("#results .list");
+var pinnedBox = document.querySelector("#pinned .list");
 
-var getDescArray = function()  {
-  var descArray = [];
-  var co = inp.value.trim();
-  co = co.replace(/[^a-z0-9]/gi, "");
-  if (co === "") {
-    return [];
+
+// gets the codes from the html. only run during init
+var codeDescList = {
+  cleanCodesList: [],
+  descList: [],
+  cleanCodesAndDescList: [],
+  codesList: [],
+  codesAndDescList: [],
+  getCleanCodesList: function() {
+    cleanCodesList = [];
+    for (var i = 0; i < allCodes.length; i++) {
+      var eachCode = allCodes[i].textContent.replace(/[^a-z0-9]/gi, "");
+      this.cleanCodesList.push({
+        index: i,
+        code: eachCode
+      });
+    }
+    return this.cleanCodesList;
+  },
+  getCodesList: function() {
+    this.codesList = [];
+    for (var i = 0; i < allCodes.length; i++) {
+      var eachCode = allCodes[i].textContent;
+      this.codesList.push({
+        index: i,
+        code: eachCode
+      });
+    }
+    return this.codesList;
+  },
+  getDescList: function() {
+    this.descList = [];
+    for (var i = 0; i < allCodes.length; i++) {
+      var eachDesc = allDesc[i].textContent;
+      this.descList.push({
+        index: i,
+        desc: eachDesc
+      });
+    }
+    return this.descList;
+  },
+  getCleanCodesAndDescList: function() {
+    this.cleanCodesAndDescList = [];
+    this.getCleanCodesList();
+    this.getDescList();
+    for (var i = 0; i < allCodes.length; i++) {
+      var eachCode = this.cleanCodesList[i].code.toUpperCase();
+      var eachDesc = this.descList[i].desc;
+      this.cleanCodesAndDescList.push({
+        index: i,
+        code: eachCode,
+        desc: eachDesc
+      });
+    }
+    return this.cleanCodesAndDescList;
+  },
+  getCodesAndDescList: function() {
+    this.codesAndDescList = [];
+    this.getCodesList();
+    this.getDescList();
+    for (var i = 0; i < allCodes.length; i++) {
+      var eachCode = this.codesList[i].code;
+      var eachDesc = this.descList[i].desc;
+      this.codesAndDescList.push({
+        index: i,
+        code: eachCode,
+        desc: eachDesc
+      });
+    }
+    return this.codesAndDescList;
   }
-  for (var i = 0; i < allCodes.length; i++) {
-    var eachCode = allCodes[i].textContent.replace(/[^a-z0-9]/gi, "");
-    console.log(eachCode);
-    if (eachCode.includes(co.toUpperCase())) {
-        descArray.push(i);
+};
+
+init();
+
+// fills the full array of objects with all codes
+function init() {
+  codeDescList.cleanCodesList = codeDescList.getCleanCodesList();
+  codeDescList.descList = codeDescList.getDescList();
+  codeDescList.cleanCodesAndDescList = codeDescList.getCleanCodesAndDescList();
+  codeDescList.codesList = codeDescList.getCodesList();
+  codeDescList.codesAndDescList = codeDescList.getCodesAndDescList();
+}
+
+
+
+var codeSearch = {
+  resultArray: [],
+  indexArray: [],
+  input: "",
+  findInput: function() {
+    var co = inp.value.trim();
+    co = co.replace(/[^a-z0-9]/gi, "").toUpperCase();
+    this.input = co;
+    return co;
+  },
+  getResultArray: function() {
+    this.input = this.findInput();
+    this.resultArray = [];
+    if (this.input === "") {
+      return this.resultArray;
+    }
+    codeDescList.cleanCodesAndDescList.forEach(function(element) {
+      var eachCode = element.code;
+      if (eachCode.includes(codeSearch.input)) {
+        var eachDesc = element.desc;
+        var i = element.index;
+        codeSearch.resultArray.push({
+          index: i,
+          code: eachCode,
+          desc: eachDesc
+        });
       }
-  };
-console.log(descArray);
-return descArray;
-};
-var showResults = function() {
-  var descArray = getDescArray();
-  resultsBox.innerHTML = "";
-  if (descArray.length === 0) {
-    resultsBox.innerHTML = "<p>no results found</p>";
+    });
+    return this.resultArray;
+  },
+  showResults: function() {
+    var rArray = this.getResultArray();
+    resultsBox.innerHTML = "";
+    if (rArray.length === 0) {
+      resultsBox.innerHTML = "<p>no results found</p>";
+    }
+
+    rArray.forEach(function(element) {
+      if (pin.indexOf(element) === -1) {
+        resultsBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut" id="r' + element.index + '" onclick="pin.add(this)">pin</button></span>' + codeDescList.codesAndDescList[element.index].code + '</span>     <span class="descDisplay">' + element.desc + "</span><br>";
+      }
+      else {
+        resultsBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut pinnedButton" id="r' + element.index + '" onclick="pin.add(this)">pin</button></span>' + codeDescList.codesAndDescList[element.index].code + '</span>     <span class="descDisplay">' + element.desc + "</span><br>";
+      }
+    });
   }
-  descArray.forEach(function(element) {
-    if (pin.check(allCodes[element].textContent.trim())) {
-      resultsBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut pinnedButton">pin</button></span>' + allCodes[element].textContent + '</span>     <span class="descDisplay">' + allDesc[element].textContent + "</span><br>";
-    }
-    else {
-      resultsBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut" onclick="pin.add(this)">pin</button></span>' + allCodes[element].textContent + '</span>     <span class="descDisplay">' + allDesc[element].textContent + "</span><br>";
-    }
-  });
 };
-// inp.addEventListener("change", showResults);
-//setup before functions
-var typingTimer;                //timer identifier
-var doneTypingInterval = 500;  //time in ms, 5 second for example
 
-//on keyup, start the countdown
-inp.addEventListener('keyup', function () {
-clearTimeout(typingTimer);
-typingTimer = setTimeout(showResults, doneTypingInterval);
-});
-
-//on keydown, clear the countdown
-inp.addEventListener('keydown', function () {
-clearTimeout(typingTimer);
-});
 
 var pin = {
-  list: [],
-  getCode: function(elementClicked) {
-    var newCode = elementClicked.parentElement.parentElement.textContent.substring(3).trim();
-    return newCode;
-  },
-  add: function(pinClicked) {
-    var newCode = pin.getCode(pinClicked);
-    if (!pin.check(newCode)) {
-      pin.list.push(newCode);
-      pinClicked.classList.add("pinnedButton");
-      this.fill();
-    }
-    console.log(this.list);
-  },
-  check: function(checkCode) {
-    console.log("entered check. checkCode is " + checkCode + " and array is " + this.list);
-    for (var i = 0; i < pin.list.length; i++) {
-      if (pin.list[i] == checkCode) {
-        return true;
+  pinnedList: [],
+  indexOf: function(e) {
+    for (var i = 0; i < this.pinnedList.length; i++) {
+      if (this.pinnedList[i].index === e.index) {
+        return i;
       }
     }
-    return false;
+    return -1;
   },
-  fill: function() {
+  add: function(button) {
+    var i = button.id.substring(1);
+    if (this.indexOf(codeDescList.codesAndDescList[i]) !== -1) {
+      return;
+    }
+    this.pinnedList.push(codeDescList.codesAndDescList[i]);
+    button.classList.add("pinnedButton");
+    this.showPinned();
+  },
+  remove: function(button) {
+    var i = button.id.substring(1);
+    var j = this.indexOf(codeDescList.codesAndDescList[i]);
+    this.pinnedList.splice(j, 1);
+    this.showPinned();
+    codeSearch.showResults();
+  },
+  showPinned: function() {
     pinnedBox.innerHTML = "";
-    for (var i = 0; i < this.list.length; i++) {
-        pinnedBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut" onclick="pin.remove(this)">unpin</button></span>' + pin.list[i] + '</span>     <span class="descDisplay">' + "the description" + "</span><br>";
-    }
-  },
-  getRemoveCode: function(elementClicked) {
-    var newCode = elementClicked.parentElement.parentElement.textContent.substring(5).trim();
-    return newCode;
-  },
-  remove: function(pinClicked) {
-    var codeToRemove = this.getRemoveCode(pinClicked);
-    var index = this.list.indexOf(codeToRemove);
-    if (index > -1) {
-      this.list.splice(index, 1);
-    }
-    showResults();
-    this.fill();
+    this.pinnedList.forEach(function(element) {
+      pinnedBox.innerHTML += '<span class="codeDisplay"><span><button class="but pinBut" id="r' + element.index + '" onclick="pin.remove(this)">remove</button></span>' + codeDescList.codesAndDescList[element.index].code + '</span>     <span class="descDisplay">' + element.desc + "</span><br>";
+    });
   }
-};
-var pinBut = document.getElementsByClassName("pinBut");
-var pinnedBox = document.querySelector("#pinned .list");
+}
