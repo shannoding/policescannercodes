@@ -1,0 +1,18 @@
+{
+"state": "California",
+"data": 
+	[
+		{
+		"code": "10-0",
+		"description": "Exercise great caution."
+		},
+		{
+		"code": "10-1",
+		"description": "Reception is poor."
+		},
+		{
+		"code": "10-2",
+		"description": "Reception is good."
+		}
+	]
+}
