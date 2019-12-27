@@ -45,11 +45,11 @@
 		{
 			"code": "10-8",
 			"description": "In service/available for assignment."
-		}
+		},
 		{
 			"code": "10-9",
 			"description": "Repeat last transmission."
-		}
+		},
 		{
 			"code": "10-10",
 			"description": "Off duty."
