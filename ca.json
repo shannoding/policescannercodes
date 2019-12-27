@@ -137,7 +137,7 @@
 		{ "code": "10-97 ", "description": "Arrived at the scene." },
 		{ "code": "10-98 ", "description": "Available for assignment." },
 		{ "code": "10-100", "description": "Civil disturbance - Mutual aid standby." },
-		{ "code": "10-101", "description": "Civil disturbance - Mutual aid request." },
+		{ "code": "10-101", "description": "Civil disturbance - Mutual aid request." }
 
 	]
 }
