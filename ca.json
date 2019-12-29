@@ -133,7 +133,7 @@
 		{ "code": "11-96", "description": "Checking a suspicious vehicle.", "category": 1 },
 		{ "code": "11-97", "description": "Time/security check on patrol vehicles.", "category": 1 },
 		{ "code": "11-98", "description": "Meet: _______", "category": 1 },
-		{ "code": "11-99", "description": "Officer needs help.", "category": 1 },
+		{ "code": "11-99", "description": "Officer needs help.", "category": 1 }
 
 	],
 	"categories": [
