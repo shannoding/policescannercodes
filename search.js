@@ -86,7 +86,7 @@ function displayCodeBoxes(cdata, cat) {
 		let domCodesBox = document.createElement("div");
 		domCodesBox.className = "codesBox";
 
-		let domCodesHead = document.createElement(h1);
+		let domCodesHead = document.createElement("h1");
 		let domCodesHeadText = document.createTextNode(cat[i]);
 		domCodesHead.appendChild(domCodesHeadText);
 
@@ -102,7 +102,19 @@ function displayCodeBoxes(cdata, cat) {
 	}
 	console.log(domCodesBoxes);
 	for (let obj of cdata) {
+		let domList = domCodesBoxes[obj.category];
 
+		let domCode = document.createElement("span");
+		domCode.className = "code";
+		domCode.innerHTML = obj.code;
+		
+		let domDesc = document.createElement("span");
+		domDesc.className = "desc";
+		domDesc.innerHTML = obj.description;
+
+		domList.appendChild(domCode);
+		domList.appendChild(domDesc);
+		domList.appendChild(document.createElement("br"));
 	}
 }
 
