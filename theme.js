@@ -23,18 +23,12 @@ let themes = {
 }
 
 let themeKeys = Object.keys(themes);
-let currentTheme = themes.light;
+let currentTheme = themes[getThemeNameFromStorage()];
 
 window.addEventListener("DOMContentLoaded", displayInitTheme);
 
 function displayInitTheme() {
-	// let defaultTheme = getCookie("theme");
-	// if (defaultTheme != "") {
-	// 	currentTheme = themes[defaultTheme];
-	// }
-	// else {
-	// 	setCookie("theme", currentTheme.name, 365);
-	// }
+	console.log(currentTheme);
 	stylesheetLink.setAttribute("href", `css/${currentTheme.href}`);
 	let nextIndex = (themeKeys.indexOf(currentTheme.name) + 1) % themeKeys.length;
 	console.log(nextIndex);
@@ -45,7 +39,31 @@ themeToggleButton.addEventListener("click", function() {
 	let nextIndex = (themeKeys.indexOf(currentTheme.name) + 1) % themeKeys.length;
 	currentTheme = themes[themeKeys[nextIndex]];
 	console.log(currentTheme);
-	// setCookie("theme", currentTheme.name, 365);
+	updateThemeFromStorage(currentTheme);
 	this.innerHTML = themes[themeKeys[(nextIndex + 1) % themeKeys.length]].name;
 	stylesheetLink.setAttribute("href", `css/${currentTheme.href}`);
 });
+
+function getThemeNameFromStorage() {
+	if (typeof(Storage) !== "undefined") {
+		if (localStorage.themeName) {
+			return localStorage.themeName;
+		}
+		else {
+			localStorage.setItem("themeName", themes.light.name);
+			return localStorage.themeName;
+		}
+	}
+	else {
+		console.log("No web storage support");
+	}
+}
+
+function updateThemeFromStorage(ctheme) {
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("themeName", ctheme.name);
+	}
+	else {
+		console.log("No web storage support");
+	}
+}
