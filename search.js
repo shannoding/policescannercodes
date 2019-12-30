@@ -2,8 +2,6 @@ let inp = document.querySelector("input");
 let resultsBox = document.querySelector("#results .list");
 let pinnedBox = document.querySelector("#pinned .list");
 let allCodesBox = document.querySelector("#codes");
-let themeToggleButton = document.querySelector("#theme-toggle");
-let stylesheetLink = document.querySelector("#stylesheet");
 
 var manageInput = {
 	typingTimer: function() {},
@@ -248,28 +246,3 @@ function removePin(button) {
 }
 
 
-let themes = {
-	"light": {
-		"name": "light",
-		"href": "light.css",
-	},
-	"dark": {
-		"name": "dark",
-		"href": "dark.css",
-	}
-}
-let currentTheme = themes.light;
-
-themeToggleButton.addEventListener("click", function() {
-	if (currentTheme == themes.light) {
-		currentTheme = themes.dark;
-		this.innerHTML = themes.light.name;
-		stylesheetLink.setAttribute("href", currentTheme.href);
-	}
-	else if (currentTheme == themes.dark) {
-		currentTheme = themes.light;
-		this.innerHTML =  themes.dark.name;
-		document.body.transition = "0.5s";
-		stylesheetLink.setAttribute("href", currentTheme.href);
-	}
-});

@@ -1,0 +1,41 @@
+body {
+  background:url("https://media1.giphy.com/media/f5SNtUucEqqfZs9o9S/giphy.gif");
+  background-attachment: fixed;
+}
+
+.codesBox {
+  border: 1px solid white;
+  color: white;
+  background: transparent;
+}
+
+.resultsBox, .pinnedBox {
+  border: 1px solid white;
+  background: transparent;
+  background:url("https://media.giphy.com/media/SsYqNR9XlYosaLeFvo/200w_d.gif");
+  background-attachment: fixed;
+  color:white;
+}
+  button {
+    background:transparent;
+    border:1px solid white;
+    color:white;
+  }
+  button:hover {
+    background: white;
+    color:#222;
+  }
+  input {
+    background:transparent;
+    color:white;
+    border-color:white;
+  }
+  input::placeholder {
+    color:white;
+    opacity:0.7;
+  }
+
+.pinnedButton {
+  background: #77dd77;
+  color:white;
+}

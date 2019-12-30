@@ -1,0 +1,38 @@
+body {
+  background:#222;
+}
+
+.codesBox {
+  border: 1px solid white;
+  color: white;
+  background: #222;
+}
+
+.resultsBox, .pinnedBox {
+  border: 1px solid white;
+  background: #222;
+  color:white;
+}
+  button {
+    background:#222;
+    border:1px solid white;
+    color:white;
+  }
+  button:hover {
+    background: white;
+    color:#222;
+  }
+  input {
+    background:#222;
+    color:white;
+    border-color:white;
+  }
+  input::placeholder {
+    color:white;
+    opacity:0.7;
+  }
+
+.pinnedButton {
+  background: #77dd77;
+  color:white;
+}

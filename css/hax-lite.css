@@ -1,0 +1,37 @@
+body {
+  background: black;
+}
+
+.codesBox {
+  border: 1px solid #00FF00;
+  color: #00FF00;
+  background: black;
+}
+
+.resultsBox, .pinnedBox {
+  border: 1px solid #00FF00;
+  background: black;
+  color:#00FF00;
+}
+  button {
+    background:black;
+    border:1px solid #00FF00;
+    color:#00FF00;
+  }
+  button:hover {
+    background: #00FF00;
+    color:black;
+  }
+  input {
+    background:black;
+    color:#00FF00;
+    border-color:#00FF00;
+  }
+  input::placeholder {
+    color:#00FF00;
+  }
+
+.pinnedButton {
+  background: #77dd77;
+  color:#00FF00;
+}
